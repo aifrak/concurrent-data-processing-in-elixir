@@ -1,0 +1,38 @@
+version: "3.9"
+
+services:
+  app:
+    image: aifrak/concurrent-data-processing-in-elixir:latest
+    depends_on:
+      - rabbitmq
+    build:
+      context: .
+      target: base
+      args:
+        USER_UID: ${USER_UID:-1000}
+        USER_GID: ${USER_GID:-1000}
+    user: ${USER_UID:-1000}:${USER_GID:-1000}
+    command: sleep infinity
+    environment:
+      - INSIDE_DOCKER=true
+      - LANG=en_US.UTF-8
+    ports:
+      - 4000:4000
+    volumes:
+      - .:/app
+
+  rabbitmq:
+    image: rabbitmq:3.9.13
+    restart: always
+    environment:
+      - RABBITMQ_DEFAULT_USER=${RABBITMQ_USER:-guest}
+      - RABBITMQ_DEFAULT_PASS=${RABBITMQ_PASSWORD:-guest}
+    ports:
+      - ${RABBITMQ_PORT:-5672}:5672
+    expose:
+      - ${RABBITMQ_PORT:-5672}
+    volumes:
+      - rabbitmq:/var/lib/rabbitmq
+
+volumes:
+  rabbitmq: null

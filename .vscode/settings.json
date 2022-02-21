@@ -1,0 +1,87 @@
+{
+  // Editor:
+  "editor.tabSize": 2,
+  "editor.rulers": [
+    80
+  ],
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.formatOnType": true,
+  // Files:
+  "files.watcherExclude": {
+    "**/.git": true,
+    // VSCode
+    "**/.history/**": true,
+    // NodeJS
+    "**/node_modules/**": true,
+    "**/npm_cache/**": true,
+    // Elixir
+    "**/_build/**": true,
+    "**/.elixir_ls/**": true,
+    "**/.sobelow": true,
+    "**/.fetch/**": true,
+    "**/cover/**": true,
+    "**/deps/**": true,
+    "**/doc/**": true,
+    "**/erl_crash.dump": true,
+    // Dialyzer
+    "**/dialyzer/plts": true
+  },
+  "files.exclude": {
+    "**/.git": true,
+    "**/.history": true
+  },
+  // Search:
+  "search.exclude": {
+    "**/.git": true,
+    // VSCode
+    "**/.history": true,
+    // NodeJS
+    "**/node_modules": true,
+    "**/npm_cache": true,
+    // Elixir
+    "**/_build": true,
+    "**/.elixir_ls": true,
+    "**/.sobelow": true,
+    "**/.fetch": true,
+    "**/cover": true,
+    "**/deps": true,
+    "**/doc": true,
+    "**/erl_crash.dump": true,
+    // Dialyzer
+    "**/dialyzer/plts": true
+  },
+  // Emmet:
+  "emmet.includeLanguages": {
+    "phoenix-heex": "html"
+  },
+  // Override languages:
+  "[elixir]": {
+    "editor.rulers": [
+      98
+    ]
+  },
+  "[html][eex][phoenix-heex]": {
+    "editor.rulers": [
+      120
+    ]
+  },
+  // VSCode icons:
+  "vsicons.associations.files": [
+    {
+      "icon": "docker",
+      "extensions": [
+        "docker-compose.dev.yml",
+        "docker-compose.override.yml"
+      ],
+      "filename": true
+    },
+    {
+      "icon": "eex",
+      "extensions": [
+        "heex",
+      ],
+      "filename": false
+    }
+  ],
+}

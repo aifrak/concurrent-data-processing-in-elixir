@@ -1,0 +1,12 @@
+# Local history (VSCode extension)
+.history/
+
+# NodeJS
+node_modules/
+npm_cache/
+
+# Docker compose
+docker-compose.override.yml
+
+# ElixirLS (VSCode extension)
+.elixir_ls/

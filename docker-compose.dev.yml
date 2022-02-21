@@ -1,0 +1,7 @@
+version: "3.9"
+
+services:
+  app:
+    image: aifrak/concurrent-data-processing-in-elixir:dev
+    build:
+      target: dev

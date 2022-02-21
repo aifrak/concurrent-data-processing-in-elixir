@@ -1,0 +1,11 @@
+{
+  "recommendations": [
+    // Elixir
+    "jakebecker.elixir-ls",
+
+    // Phoenix
+    "phoenixframework.phoenix"
+  ],
+
+  "unwantedRecommendations": []
+}
