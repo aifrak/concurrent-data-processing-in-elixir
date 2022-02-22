@@ -23,6 +23,10 @@ defmodule Sender do
   end
 
   def notify_all(emails) do
-    Enum.each(emails, &send_email/1)
+    Enum.each(emails, fn email ->
+      Task.start(fn ->
+        send_email(email)
+      end)
+    end)
   end
 end
