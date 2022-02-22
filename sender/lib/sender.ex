@@ -23,10 +23,12 @@ defmodule Sender do
   end
 
   def notify_all(emails) do
-    Enum.each(emails, fn email ->
-      Task.start(fn ->
+    emails
+    |> Enum.map(fn email ->
+      Task.async(fn ->
         send_email(email)
       end)
     end)
+    |> Enum.map(&Task.await/1)
   end
 end
