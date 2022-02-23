@@ -8,10 +8,16 @@ defmodule Jobber.Application do
   @impl true
   @spec start(any, any) :: {:error, any} | {:ok, pid}
   def start(_type, _args) do
+    job_runner_config = [
+      strategy: :one_for_one,
+      max_seconds: 30,
+      name: Jobber.JobRunner
+    ]
+
     children = [
       # Starts a worker by calling: Jobber.Worker.start_link(arg)
       # {Jobber.Worker, arg}
-      {DynamicSupervisor, strategy: :one_for_one, name: Jobber.JobRunner}
+      {DynamicSupervisor, job_runner_config}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
