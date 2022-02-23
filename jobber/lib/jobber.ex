@@ -3,6 +3,8 @@ defmodule Jobber do
   Documentation for `Jobber`.
   """
 
+  alias Jobber.{JobRunner, Job}
+
   @doc """
   Hello world.
 
@@ -14,5 +16,9 @@ defmodule Jobber do
   """
   def hello do
     :world
+  end
+
+  def start_job(args) do
+    DynamicSupervisor.start_child(JobRunner, {Job, args})
   end
 end
