@@ -3,7 +3,7 @@ defmodule Jobber do
   Documentation for `Jobber`.
   """
 
-  alias Jobber.{JobRunner, Job}
+  alias Jobber.{JobRunner, JobSupervisor}
 
   @doc """
   Hello world.
@@ -19,6 +19,6 @@ defmodule Jobber do
   end
 
   def start_job(args) do
-    DynamicSupervisor.start_child(JobRunner, {Job, args})
+    DynamicSupervisor.start_child(JobRunner, {JobSupervisor, args})
   end
 end
