@@ -16,8 +16,8 @@ defmodule Sender do
     :world
   end
 
-  def send_email("konnichiwa@world.com" = email),
-    do: raise("Oops, couldn't send email to #{email}!")
+  def send_email("konnichiwa@world.com" = _email),
+    do: :error
 
   def send_email(email) do
     Process.sleep(3000)
