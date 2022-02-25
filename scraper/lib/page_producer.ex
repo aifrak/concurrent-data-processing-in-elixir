@@ -9,7 +9,7 @@ defmodule PageProducer do
 
   def init(initial_state) do
     Logger.info("PageProducer init")
-    {:producer, initial_state, buffer_size: 1}
+    {:producer, initial_state, buffer_size: :infinity}
   end
 
   def scrape_pages(pages) when is_list(pages) do
