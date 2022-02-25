@@ -12,9 +12,17 @@ defmodule PageProducer do
     {:producer, initial_state}
   end
 
+  def scrape_pages(pages) when is_list(pages) do
+    GenStage.cast(__MODULE__, {:pages, pages})
+  end
+
   def handle_demand(demand, state) do
     Logger.info("PageProducer received demand for #{demand} pages")
     events = []
     {:noreply, events, state}
+  end
+
+  def handle_cast({:pages, pages}, state) do
+    {:noreply, pages, state}
   end
 end
