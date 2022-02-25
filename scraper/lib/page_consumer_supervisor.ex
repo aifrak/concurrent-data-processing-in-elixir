@@ -22,8 +22,8 @@ defmodule PageConsumerSupervisor do
     opts = [
       strategy: :one_for_one,
       subscribe_to: [
-        # We are going to set max_demand to 2, which means that two consumers (at most) could run concurrently.
-        {OnlinePageProducerConsumer, max_demand: 2}
+        {OnlinePageProducerConsumer.via("online_page_producer_consumer_1"), []},
+        {OnlinePageProducerConsumer.via("online_page_producer_consumer_2"), []}
       ]
     ]
 
