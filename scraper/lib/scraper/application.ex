@@ -10,6 +10,8 @@ defmodule Scraper.Application do
     children = [
       # Starts a worker by calling: Scraper.Worker.start_link(arg)
       # {Scraper.Worker, arg}
+      PageProducer,
+      PageConsumer
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
