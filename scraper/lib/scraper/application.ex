@@ -11,6 +11,7 @@ defmodule Scraper.Application do
       # Starts a worker by calling: Scraper.Worker.start_link(arg)
       # {Scraper.Worker, arg}
       PageProducer,
+      OnlinePageProducerConsumer,
       PageConsumerSupervisor
     ]
 
