@@ -37,6 +37,7 @@ defmodule Airports do
       }
     end)
     |> Flow.reject(&(&1.type == "closed"))
+    |> Flow.partition(key: {:key, :country})
     |> Flow.reduce(fn -> %{} end, fn item, acc ->
       Map.update(acc, item.country, 1, &(&1 + 1))
     end)
