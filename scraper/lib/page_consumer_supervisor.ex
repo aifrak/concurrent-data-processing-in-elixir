@@ -3,7 +3,7 @@ defmodule PageConsumerSupervisor do
   require Logger
 
   def start_link(_args) do
-    ConsumerSupervisor.start_link(__MODULE__, :ok)
+    ConsumerSupervisor.start_link(__MODULE__, :ok, name: __MODULE__)
   end
 
   def init(:ok) do
@@ -21,10 +21,7 @@ defmodule PageConsumerSupervisor do
 
     opts = [
       strategy: :one_for_one,
-      subscribe_to: [
-        {OnlinePageProducerConsumer.via("online_page_producer_consumer_1"), []},
-        {OnlinePageProducerConsumer.via("online_page_producer_consumer_2"), []}
-      ]
+      subscribe_to: []
     ]
 
     ConsumerSupervisor.init(children, opts)
