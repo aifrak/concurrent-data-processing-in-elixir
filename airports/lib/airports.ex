@@ -37,6 +37,9 @@ defmodule Airports do
       }
     end)
     |> Flow.reject(&(&1.type == "closed"))
+    |> Flow.reduce(fn -> %{} end, fn item, acc ->
+      Map.update(acc, item.country, 1, &(&1 + 1))
+    end)
     |> Enum.to_list()
   end
 end
