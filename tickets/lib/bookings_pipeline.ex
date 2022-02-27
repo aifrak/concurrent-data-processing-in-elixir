@@ -25,6 +25,9 @@ defmodule BookingsPipeline do
           # min_demand: 5,
           # max_demand: 10
         ]
+      ],
+      batchers: [
+        default: []
       ]
     ]
 
@@ -75,5 +78,11 @@ defmodule BookingsPipeline do
       message ->
         message
     end)
+  end
+
+  def handle_batch(_batcher, messages, batch_info, _context) do
+    IO.inspect(batch_info, label: "#{inspect(self())} Batch")
+
+    messages
   end
 end
