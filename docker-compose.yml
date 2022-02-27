@@ -31,7 +31,6 @@ services:
       - ${RABBITMQ_PORT:-5672}:5672
       - ${RABBITMQ_MANAGEMENT_PORT:-15672}:15672
     expose:
-      - ${RABBITMQ_PORT:-5672}
       - ${RABBITMQ_MANAGEMENT_PORT:-15672}
     volumes:
       - rabbitmq:/var/lib/rabbitmq
