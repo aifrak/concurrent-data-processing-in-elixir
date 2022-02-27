@@ -22,15 +22,17 @@ services:
       - .:/app
 
   rabbitmq:
-    image: rabbitmq:3.9.13
+    image: rabbitmq:3.9.13-management
     restart: always
     environment:
       - RABBITMQ_DEFAULT_USER=${RABBITMQ_USER:-guest}
       - RABBITMQ_DEFAULT_PASS=${RABBITMQ_PASSWORD:-guest}
     ports:
       - ${RABBITMQ_PORT:-5672}:5672
+      - ${RABBITMQ_MANAGEMENT_PORT:-15672}:15672
     expose:
       - ${RABBITMQ_PORT:-5672}
+      - ${RABBITMQ_MANAGEMENT_PORT:-15672}
     volumes:
       - rabbitmq:/var/lib/rabbitmq
 
