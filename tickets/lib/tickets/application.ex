@@ -10,6 +10,7 @@ defmodule Tickets.Application do
     children = [
       # Starts a worker by calling: Tickets.Worker.start_link(arg)
       # {Tickets.Worker, arg}
+      BookingsPipeline
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
