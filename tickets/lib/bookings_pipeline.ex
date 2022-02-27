@@ -6,7 +6,10 @@ defmodule BookingsPipeline do
   @producer_config [
     queue: "bookings_queue",
     declare: [durable: true],
-    on_failure: :reject_and_requeue
+    on_failure: :reject_and_requeue,
+    connection: [
+      host: "rabbitmq"
+    ]
   ]
 
   def start_link(_args) do
@@ -26,5 +29,10 @@ defmodule BookingsPipeline do
     ]
 
     Broadway.start_link(__MODULE__, options)
+  end
+
+  def handle_message(_processor, message, _context) do
+    # Add your business logic here...
+    IO.inspect(message, label: "Message")
   end
 end
