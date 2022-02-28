@@ -1,4 +1,6 @@
 %{
+  "broadway": {:hex, :broadway, "0.6.2", "ef8e0d257420c72f0e600958cf95556835d9921ad14be333493083226458791a", [:mix], [{:gen_stage, "~> 1.0", [hex: :gen_stage, repo: "hexpm", optional: false]}, {:telemetry, "~> 0.4.0", [hex: :telemetry, repo: "hexpm", optional: false]}], "hexpm", "f4f93704304a736c984cd6ed884f697415f68eb50906f4dc5d641926366ad8fa"},
   "flow": {:hex, :flow, "1.2.0", "515e03aa3d056cecc3e3f1e80f6ca4bbf5f45b13c88dee5db880b2f3f24f1caa", [:mix], [{:gen_stage, "~> 1.0", [hex: :gen_stage, repo: "hexpm", optional: false]}], "hexpm", "1b45bfc8a9202c5ec80b077c21df133561e56c56189ba4082dddccb6b5762525"},
   "gen_stage": {:hex, :gen_stage, "1.1.2", "b1656cd4ba431ed02c5656fe10cb5423820847113a07218da68eae5d6a260c23", [:mix], [], "hexpm", "9e39af23140f704e2b07a3e29d8f05fd21c2aaf4088ff43cb82be4b9e3148d02"},
+  "telemetry": {:hex, :telemetry, "0.4.3", "a06428a514bdbc63293cd9a6263aad00ddeb66f608163bdec7c8995784080818", [:rebar3], [], "hexpm", "eb72b8365ffda5bed68a620d1da88525e326cb82a75ee61354fc24b844768041"},
 }
