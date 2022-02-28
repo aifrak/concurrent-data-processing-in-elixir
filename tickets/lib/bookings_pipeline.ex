@@ -7,6 +7,7 @@ defmodule BookingsPipeline do
     queue: "bookings_queue",
     declare: [durable: true],
     on_failure: :reject_and_requeue,
+    qos: [prefetch_count: 100],
     connection: [
       host: "rabbitmq"
     ]
@@ -27,9 +28,11 @@ defmodule BookingsPipeline do
         ]
       ],
       batchers: [
-        cinema: [],
+        cinema: [batch_size: 75],
+        # defaults to :batch_size of 100
         musical: [],
         default: [
+          batch_size: 50
           # concurrency: 1
         ]
       ]
