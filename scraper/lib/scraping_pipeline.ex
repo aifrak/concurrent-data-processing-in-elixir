@@ -10,7 +10,10 @@ defmodule ScrapingPipeline do
         transformer: {ScrapingPipeline, :transform, []}
       ],
       processors: [
-        default: []
+        default: [max_demand: 1, concurrency: 2]
+      ],
+      batchers: [
+        default: [batch_size: 1, concurrency: 2]
       ]
     ]
 
@@ -26,5 +29,19 @@ defmodule ScrapingPipeline do
 
   def ack(:pages, _successful, _failed) do
     :ok
+  end
+
+  def handle_message(_processor, message, _context) do
+    if Scraper.online?(message.data) do
+      Broadway.Message.put_batch_key(message, message.data)
+    else
+      Broadway.Message.failed(message, "offline")
+    end
+  end
+
+  def handle_batch(_batcher, [message], _batch_info, _context) do
+    Logger.info("Batch Processor received #{message.data}")
+    Scraper.work()
+    [message]
   end
 end
